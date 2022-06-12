@@ -1,0 +1,269 @@
+7767517
+267 290
+Input                  data                 0 1 data 0=320 1=320 2=3
+Convolution            0_19                 1 1 data 0_19 0=8 1=3 2=1 3=2 4=1 5=0 6=216
+BatchNorm              0_19_bn              1 1 0_19 0_19_bn 0=8 1=.00001
+ReLU                   0_19_bn_leaky        1 1 0_19_bn 0_19_bn_leaky 0=0.1
+Convolution            1_28                 1 1 0_19_bn_leaky 1_28 0=8 1=1 2=1 3=1 4=0 5=0 6=64
+BatchNorm              1_28_bn              1 1 1_28 1_28_bn 0=8 1=.00001
+ReLU                   1_28_bn_leaky        1 1 1_28_bn 1_28_bn_leaky 0=0.1
+ConvolutionDepthWise   2_36                 1 1 1_28_bn_leaky 2_36 0=8 1=3 2=1 3=1 4=1 5=0 6=72 7=8
+BatchNorm              2_36_bn              1 1 2_36 2_36_bn 0=8 1=.00001
+ReLU                   2_36_bn_leaky        1 1 2_36_bn 2_36_bn_leaky 0=0.1
+Convolution            3_45                 1 1 2_36_bn_leaky 3_45 0=4 1=1 2=1 3=1 4=0 5=0 6=32
+BatchNorm              3_45_bn              1 1 3_45 3_45_bn 0=4 1=.00001
+Split                  3_45_bn_split        1 2 3_45_bn 3_45_bn_split_0 3_45_bn_split_1
+Convolution            4_54                 1 1 3_45_bn_split_0 4_54 0=8 1=1 2=1 3=1 4=0 5=0 6=32
+BatchNorm              4_54_bn              1 1 4_54 4_54_bn 0=8 1=.00001
+ReLU                   4_54_bn_leaky        1 1 4_54_bn 4_54_bn_leaky 0=0.1
+ConvolutionDepthWise   5_62                 1 1 4_54_bn_leaky 5_62 0=8 1=3 2=1 3=1 4=1 5=0 6=72 7=8
+BatchNorm              5_62_bn              1 1 5_62 5_62_bn 0=8 1=.00001
+ReLU                   5_62_bn_leaky        1 1 5_62_bn 5_62_bn_leaky 0=0.1
+Convolution            6_71                 1 1 5_62_bn_leaky 6_71 0=4 1=1 2=1 3=1 4=0 5=0 6=32
+BatchNorm              6_71_bn              1 1 6_71 6_71_bn 0=4 1=.00001
+Eltwise                8_83                 2 1 6_71_bn 3_45_bn_split_1 8_83 0=1
+Convolution            9_87                 1 1 8_83 9_87 0=24 1=1 2=1 3=1 4=0 5=0 6=96
+BatchNorm              9_87_bn              1 1 9_87 9_87_bn 0=24 1=.00001
+ReLU                   9_87_bn_leaky        1 1 9_87_bn 9_87_bn_leaky 0=0.1
+ConvolutionDepthWise   10_95                1 1 9_87_bn_leaky 10_95 0=24 1=3 2=1 3=2 4=1 5=0 6=216 7=24
+BatchNorm              10_95_bn             1 1 10_95 10_95_bn 0=24 1=.00001
+ReLU                   10_95_bn_leaky       1 1 10_95_bn 10_95_bn_leaky 0=0.1
+Convolution            11_104               1 1 10_95_bn_leaky 11_104 0=8 1=1 2=1 3=1 4=0 5=0 6=192
+BatchNorm              11_104_bn            1 1 11_104 11_104_bn 0=8 1=.00001
+Split                  11_104_bn_split      1 2 11_104_bn 11_104_bn_split_0 11_104_bn_split_1
+Convolution            12_113               1 1 11_104_bn_split_0 12_113 0=32 1=1 2=1 3=1 4=0 5=0 6=256
+BatchNorm              12_113_bn            1 1 12_113 12_113_bn 0=32 1=.00001
+ReLU                   12_113_bn_leaky      1 1 12_113_bn 12_113_bn_leaky 0=0.1
+ConvolutionDepthWise   13_121               1 1 12_113_bn_leaky 13_121 0=32 1=3 2=1 3=1 4=1 5=0 6=288 7=32
+BatchNorm              13_121_bn            1 1 13_121 13_121_bn 0=32 1=.00001
+ReLU                   13_121_bn_leaky      1 1 13_121_bn 13_121_bn_leaky 0=0.1
+Convolution            14_130               1 1 13_121_bn_leaky 14_130 0=8 1=1 2=1 3=1 4=0 5=0 6=256
+BatchNorm              14_130_bn            1 1 14_130 14_130_bn 0=8 1=.00001
+Eltwise                16_142               2 1 14_130_bn 11_104_bn_split_1 16_142 0=1
+Split                  16_142_split         1 2 16_142 16_142_split_0 16_142_split_1
+Convolution            17_146               1 1 16_142_split_0 17_146 0=32 1=1 2=1 3=1 4=0 5=0 6=256
+BatchNorm              17_146_bn            1 1 17_146 17_146_bn 0=32 1=.00001
+ReLU                   17_146_bn_leaky      1 1 17_146_bn 17_146_bn_leaky 0=0.1
+ConvolutionDepthWise   18_154               1 1 17_146_bn_leaky 18_154 0=32 1=3 2=1 3=1 4=1 5=0 6=288 7=32
+BatchNorm              18_154_bn            1 1 18_154 18_154_bn 0=32 1=.00001
+ReLU                   18_154_bn_leaky      1 1 18_154_bn 18_154_bn_leaky 0=0.1
+Convolution            19_163               1 1 18_154_bn_leaky 19_163 0=8 1=1 2=1 3=1 4=0 5=0 6=256
+BatchNorm              19_163_bn            1 1 19_163 19_163_bn 0=8 1=.00001
+Eltwise                21_176               2 1 19_163_bn 16_142_split_1 21_176 0=1
+Convolution            22_180               1 1 21_176 22_180 0=32 1=1 2=1 3=1 4=0 5=0 6=256
+BatchNorm              22_180_bn            1 1 22_180 22_180_bn 0=32 1=.00001
+ReLU                   22_180_bn_leaky      1 1 22_180_bn 22_180_bn_leaky 0=0.1
+ConvolutionDepthWise   23_188               1 1 22_180_bn_leaky 23_188 0=32 1=3 2=1 3=2 4=1 5=0 6=288 7=32
+BatchNorm              23_188_bn            1 1 23_188 23_188_bn 0=32 1=.00001
+ReLU                   23_188_bn_leaky      1 1 23_188_bn 23_188_bn_leaky 0=0.1
+Convolution            24_197               1 1 23_188_bn_leaky 24_197 0=8 1=1 2=1 3=1 4=0 5=0 6=256
+BatchNorm              24_197_bn            1 1 24_197 24_197_bn 0=8 1=.00001
+Split                  24_197_bn_split      1 2 24_197_bn 24_197_bn_split_0 24_197_bn_split_1
+Convolution            25_206               1 1 24_197_bn_split_0 25_206 0=48 1=1 2=1 3=1 4=0 5=0 6=384
+BatchNorm              25_206_bn            1 1 25_206 25_206_bn 0=48 1=.00001
+ReLU                   25_206_bn_leaky      1 1 25_206_bn 25_206_bn_leaky 0=0.1
+ConvolutionDepthWise   26_214               1 1 25_206_bn_leaky 26_214 0=48 1=3 2=1 3=1 4=1 5=0 6=432 7=48
+BatchNorm              26_214_bn            1 1 26_214 26_214_bn 0=48 1=.00001
+ReLU                   26_214_bn_leaky      1 1 26_214_bn 26_214_bn_leaky 0=0.1
+Convolution            27_223               1 1 26_214_bn_leaky 27_223 0=8 1=1 2=1 3=1 4=0 5=0 6=384
+BatchNorm              27_223_bn            1 1 27_223 27_223_bn 0=8 1=.00001
+Eltwise                29_235               2 1 27_223_bn 24_197_bn_split_1 29_235 0=1
+Split                  29_235_split         1 2 29_235 29_235_split_0 29_235_split_1
+Convolution            30_239               1 1 29_235_split_0 30_239 0=48 1=1 2=1 3=1 4=0 5=0 6=384
+BatchNorm              30_239_bn            1 1 30_239 30_239_bn 0=48 1=.00001
+ReLU                   30_239_bn_leaky      1 1 30_239_bn 30_239_bn_leaky 0=0.1
+ConvolutionDepthWise   31_247               1 1 30_239_bn_leaky 31_247 0=48 1=3 2=1 3=1 4=1 5=0 6=432 7=48
+BatchNorm              31_247_bn            1 1 31_247 31_247_bn 0=48 1=.00001
+ReLU                   31_247_bn_leaky      1 1 31_247_bn 31_247_bn_leaky 0=0.1
+Convolution            32_256               1 1 31_247_bn_leaky 32_256 0=8 1=1 2=1 3=1 4=0 5=0 6=384
+BatchNorm              32_256_bn            1 1 32_256 32_256_bn 0=8 1=.00001
+Eltwise                34_270               2 1 32_256_bn 29_235_split_1 34_270 0=1
+Convolution            35_274               1 1 34_270 35_274 0=48 1=1 2=1 3=1 4=0 5=0 6=384
+BatchNorm              35_274_bn            1 1 35_274 35_274_bn 0=48 1=.00001
+ReLU                   35_274_bn_leaky      1 1 35_274_bn 35_274_bn_leaky 0=0.1
+ConvolutionDepthWise   36_282               1 1 35_274_bn_leaky 36_282 0=48 1=3 2=1 3=1 4=1 5=0 6=432 7=48
+BatchNorm              36_282_bn            1 1 36_282 36_282_bn 0=48 1=.00001
+ReLU                   36_282_bn_leaky      1 1 36_282_bn 36_282_bn_leaky 0=0.1
+Convolution            37_291               1 1 36_282_bn_leaky 37_291 0=16 1=1 2=1 3=1 4=0 5=0 6=768
+BatchNorm              37_291_bn            1 1 37_291 37_291_bn 0=16 1=.00001
+Split                  37_291_bn_split      1 2 37_291_bn 37_291_bn_split_0 37_291_bn_split_1
+Convolution            38_300               1 1 37_291_bn_split_0 38_300 0=96 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              38_300_bn            1 1 38_300 38_300_bn 0=96 1=.00001
+ReLU                   38_300_bn_leaky      1 1 38_300_bn 38_300_bn_leaky 0=0.1
+ConvolutionDepthWise   39_308               1 1 38_300_bn_leaky 39_308 0=96 1=3 2=1 3=1 4=1 5=0 6=864 7=96
+BatchNorm              39_308_bn            1 1 39_308 39_308_bn 0=96 1=.00001
+ReLU                   39_308_bn_leaky      1 1 39_308_bn 39_308_bn_leaky 0=0.1
+Convolution            40_317               1 1 39_308_bn_leaky 40_317 0=16 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              40_317_bn            1 1 40_317 40_317_bn 0=16 1=.00001
+Eltwise                42_329               2 1 40_317_bn 37_291_bn_split_1 42_329 0=1
+Split                  42_329_split         1 2 42_329 42_329_split_0 42_329_split_1
+Convolution            43_333               1 1 42_329_split_0 43_333 0=96 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              43_333_bn            1 1 43_333 43_333_bn 0=96 1=.00001
+ReLU                   43_333_bn_leaky      1 1 43_333_bn 43_333_bn_leaky 0=0.1
+ConvolutionDepthWise   44_341               1 1 43_333_bn_leaky 44_341 0=96 1=3 2=1 3=1 4=1 5=0 6=864 7=96
+BatchNorm              44_341_bn            1 1 44_341 44_341_bn 0=96 1=.00001
+ReLU                   44_341_bn_leaky      1 1 44_341_bn 44_341_bn_leaky 0=0.1
+Convolution            45_350               1 1 44_341_bn_leaky 45_350 0=16 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              45_350_bn            1 1 45_350 45_350_bn 0=16 1=.00001
+Eltwise                47_362               2 1 45_350_bn 42_329_split_1 47_362 0=1
+Split                  47_362_split         1 2 47_362 47_362_split_0 47_362_split_1
+Convolution            48_366               1 1 47_362_split_0 48_366 0=96 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              48_366_bn            1 1 48_366 48_366_bn 0=96 1=.00001
+ReLU                   48_366_bn_leaky      1 1 48_366_bn 48_366_bn_leaky 0=0.1
+ConvolutionDepthWise   49_374               1 1 48_366_bn_leaky 49_374 0=96 1=3 2=1 3=1 4=1 5=0 6=864 7=96
+BatchNorm              49_374_bn            1 1 49_374 49_374_bn 0=96 1=.00001
+ReLU                   49_374_bn_leaky      1 1 49_374_bn 49_374_bn_leaky 0=0.1
+Convolution            50_383               1 1 49_374_bn_leaky 50_383 0=16 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              50_383_bn            1 1 50_383 50_383_bn 0=16 1=.00001
+Eltwise                52_396               2 1 50_383_bn 47_362_split_1 52_396 0=1
+Split                  52_396_split         1 2 52_396 52_396_split_0 52_396_split_1
+Convolution            53_400               1 1 52_396_split_0 53_400 0=96 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              53_400_bn            1 1 53_400 53_400_bn 0=96 1=.00001
+ReLU                   53_400_bn_leaky      1 1 53_400_bn 53_400_bn_leaky 0=0.1
+ConvolutionDepthWise   54_408               1 1 53_400_bn_leaky 54_408 0=96 1=3 2=1 3=1 4=1 5=0 6=864 7=96
+BatchNorm              54_408_bn            1 1 54_408 54_408_bn 0=96 1=.00001
+ReLU                   54_408_bn_leaky      1 1 54_408_bn 54_408_bn_leaky 0=0.1
+Convolution            55_417               1 1 54_408_bn_leaky 55_417 0=16 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              55_417_bn            1 1 55_417 55_417_bn 0=16 1=.00001
+Eltwise                57_430               2 1 55_417_bn 52_396_split_1 57_430 0=1
+Convolution            58_434               1 1 57_430 58_434 0=96 1=1 2=1 3=1 4=0 5=0 6=1536
+BatchNorm              58_434_bn            1 1 58_434 58_434_bn 0=96 1=.00001
+ReLU                   58_434_bn_leaky      1 1 58_434_bn 58_434_bn_leaky 0=0.1
+ConvolutionDepthWise   59_442               1 1 58_434_bn_leaky 59_442 0=96 1=3 2=1 3=2 4=1 5=0 6=864 7=96
+BatchNorm              59_442_bn            1 1 59_442 59_442_bn 0=96 1=.00001
+ReLU                   59_442_bn_leaky      1 1 59_442_bn 59_442_bn_leaky 0=0.1
+Convolution            60_451               1 1 59_442_bn_leaky 60_451 0=24 1=1 2=1 3=1 4=0 5=0 6=2304
+BatchNorm              60_451_bn            1 1 60_451 60_451_bn 0=24 1=.00001
+Split                  60_451_bn_split      1 2 60_451_bn 60_451_bn_split_0 60_451_bn_split_1
+Convolution            61_460               1 1 60_451_bn_split_0 61_460 0=136 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              61_460_bn            1 1 61_460 61_460_bn 0=136 1=.00001
+ReLU                   61_460_bn_leaky      1 1 61_460_bn 61_460_bn_leaky 0=0.1
+ConvolutionDepthWise   62_468               1 1 61_460_bn_leaky 62_468 0=136 1=3 2=1 3=1 4=1 5=0 6=1224 7=136
+BatchNorm              62_468_bn            1 1 62_468 62_468_bn 0=136 1=.00001
+ReLU                   62_468_bn_leaky      1 1 62_468_bn 62_468_bn_leaky 0=0.1
+Convolution            63_477               1 1 62_468_bn_leaky 63_477 0=24 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              63_477_bn            1 1 63_477 63_477_bn 0=24 1=.00001
+Eltwise                65_489               2 1 63_477_bn 60_451_bn_split_1 65_489 0=1
+Split                  65_489_split         1 2 65_489 65_489_split_0 65_489_split_1
+Convolution            66_493               1 1 65_489_split_0 66_493 0=136 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              66_493_bn            1 1 66_493 66_493_bn 0=136 1=.00001
+ReLU                   66_493_bn_leaky      1 1 66_493_bn 66_493_bn_leaky 0=0.1
+ConvolutionDepthWise   67_501               1 1 66_493_bn_leaky 67_501 0=136 1=3 2=1 3=1 4=1 5=0 6=1224 7=136
+BatchNorm              67_501_bn            1 1 67_501 67_501_bn 0=136 1=.00001
+ReLU                   67_501_bn_leaky      1 1 67_501_bn 67_501_bn_leaky 0=0.1
+Convolution            68_510               1 1 67_501_bn_leaky 68_510 0=24 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              68_510_bn            1 1 68_510 68_510_bn 0=24 1=.00001
+Eltwise                70_523               2 1 68_510_bn 65_489_split_1 70_523 0=1
+Split                  70_523_split         1 2 70_523 70_523_split_0 70_523_split_1
+Convolution            71_527               1 1 70_523_split_0 71_527 0=136 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              71_527_bn            1 1 71_527 71_527_bn 0=136 1=.00001
+ReLU                   71_527_bn_leaky      1 1 71_527_bn 71_527_bn_leaky 0=0.1
+ConvolutionDepthWise   72_535               1 1 71_527_bn_leaky 72_535 0=136 1=3 2=1 3=1 4=1 5=0 6=1224 7=136
+BatchNorm              72_535_bn            1 1 72_535 72_535_bn 0=136 1=.00001
+ReLU                   72_535_bn_leaky      1 1 72_535_bn 72_535_bn_leaky 0=0.1
+Convolution            73_544               1 1 72_535_bn_leaky 73_544 0=24 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              73_544_bn            1 1 73_544 73_544_bn 0=24 1=.00001
+Eltwise                75_556               2 1 73_544_bn 70_523_split_1 75_556 0=1
+Split                  75_556_split         1 2 75_556 75_556_split_0 75_556_split_1
+Convolution            76_560               1 1 75_556_split_0 76_560 0=136 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              76_560_bn            1 1 76_560 76_560_bn 0=136 1=.00001
+ReLU                   76_560_bn_leaky      1 1 76_560_bn 76_560_bn_leaky 0=0.1
+ConvolutionDepthWise   77_568               1 1 76_560_bn_leaky 77_568 0=136 1=3 2=1 3=1 4=1 5=0 6=1224 7=136
+BatchNorm              77_568_bn            1 1 77_568 77_568_bn 0=136 1=.00001
+ReLU                   77_568_bn_leaky      1 1 77_568_bn 77_568_bn_leaky 0=0.1
+Convolution            78_577               1 1 77_568_bn_leaky 78_577 0=24 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              78_577_bn            1 1 78_577 78_577_bn 0=24 1=.00001
+Eltwise                80_590               2 1 78_577_bn 75_556_split_1 80_590 0=1
+Split                  80_590_split         1 2 80_590 80_590_split_0 80_590_split_1
+Convolution            81_594               1 1 80_590_split_0 81_594 0=136 1=1 2=1 3=1 4=0 5=0 6=3264
+BatchNorm              81_594_bn            1 1 81_594 81_594_bn 0=136 1=.00001
+ReLU                   81_594_bn_leaky      1 1 81_594_bn 81_594_bn_leaky 0=0.1
+ConvolutionDepthWise   82_602               1 1 81_594_bn_leaky 82_602 0=136 1=3 2=1 3=2 4=1 5=0 6=1224 7=136
+BatchNorm              82_602_bn            1 1 82_602 82_602_bn 0=136 1=.00001
+ReLU                   82_602_bn_leaky      1 1 82_602_bn 82_602_bn_leaky 0=0.1
+Convolution            83_612               1 1 82_602_bn_leaky 83_612 0=48 1=1 2=1 3=1 4=0 5=0 6=6528
+BatchNorm              83_612_bn            1 1 83_612 83_612_bn 0=48 1=.00001
+Split                  83_612_bn_split      1 2 83_612_bn 83_612_bn_split_0 83_612_bn_split_1
+Convolution            84_621               1 1 83_612_bn_split_0 84_621 0=224 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              84_621_bn            1 1 84_621 84_621_bn 0=224 1=.00001
+ReLU                   84_621_bn_leaky      1 1 84_621_bn 84_621_bn_leaky 0=0.1
+ConvolutionDepthWise   85_629               1 1 84_621_bn_leaky 85_629 0=224 1=3 2=1 3=1 4=1 5=0 6=2016 7=224
+BatchNorm              85_629_bn            1 1 85_629 85_629_bn 0=224 1=.00001
+ReLU                   85_629_bn_leaky      1 1 85_629_bn 85_629_bn_leaky 0=0.1
+Convolution            86_638               1 1 85_629_bn_leaky 86_638 0=48 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              86_638_bn            1 1 86_638 86_638_bn 0=48 1=.00001
+Eltwise                88_650               2 1 86_638_bn 83_612_bn_split_1 88_650 0=1
+Split                  88_650_split         1 2 88_650 88_650_split_0 88_650_split_1
+Convolution            89_654               1 1 88_650_split_0 89_654 0=224 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              89_654_bn            1 1 89_654 89_654_bn 0=224 1=.00001
+ReLU                   89_654_bn_leaky      1 1 89_654_bn 89_654_bn_leaky 0=0.1
+ConvolutionDepthWise   90_662               1 1 89_654_bn_leaky 90_662 0=224 1=3 2=1 3=1 4=1 5=0 6=2016 7=224
+BatchNorm              90_662_bn            1 1 90_662 90_662_bn 0=224 1=.00001
+ReLU                   90_662_bn_leaky      1 1 90_662_bn 90_662_bn_leaky 0=0.1
+Convolution            91_671               1 1 90_662_bn_leaky 91_671 0=48 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              91_671_bn            1 1 91_671 91_671_bn 0=48 1=.00001
+Eltwise                93_683               2 1 91_671_bn 88_650_split_1 93_683 0=1
+Split                  93_683_split         1 2 93_683 93_683_split_0 93_683_split_1
+Convolution            94_687               1 1 93_683_split_0 94_687 0=224 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              94_687_bn            1 1 94_687 94_687_bn 0=224 1=.00001
+ReLU                   94_687_bn_leaky      1 1 94_687_bn 94_687_bn_leaky 0=0.1
+ConvolutionDepthWise   95_695               1 1 94_687_bn_leaky 95_695 0=224 1=3 2=1 3=1 4=1 5=0 6=2016 7=224
+BatchNorm              95_695_bn            1 1 95_695 95_695_bn 0=224 1=.00001
+ReLU                   95_695_bn_leaky      1 1 95_695_bn 95_695_bn_leaky 0=0.1
+Convolution            96_704               1 1 95_695_bn_leaky 96_704 0=48 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              96_704_bn            1 1 96_704 96_704_bn 0=48 1=.00001
+Eltwise                98_716               2 1 96_704_bn 93_683_split_1 98_716 0=1
+Split                  98_716_split         1 2 98_716 98_716_split_0 98_716_split_1
+Convolution            99_720               1 1 98_716_split_0 99_720 0=224 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              99_720_bn            1 1 99_720 99_720_bn 0=224 1=.00001
+ReLU                   99_720_bn_leaky      1 1 99_720_bn 99_720_bn_leaky 0=0.1
+ConvolutionDepthWise   100_728              1 1 99_720_bn_leaky 100_728 0=224 1=3 2=1 3=1 4=1 5=0 6=2016 7=224
+BatchNorm              100_728_bn           1 1 100_728 100_728_bn 0=224 1=.00001
+ReLU                   100_728_bn_leaky     1 1 100_728_bn 100_728_bn_leaky 0=0.1
+Convolution            101_737              1 1 100_728_bn_leaky 101_737 0=48 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              101_737_bn           1 1 101_737 101_737_bn 0=48 1=.00001
+Eltwise                103_749              2 1 101_737_bn 98_716_split_1 103_749 0=1
+Split                  103_749_split        1 2 103_749 103_749_split_0 103_749_split_1
+Convolution            104_753              1 1 103_749_split_0 104_753 0=224 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              104_753_bn           1 1 104_753 104_753_bn 0=224 1=.00001
+ReLU                   104_753_bn_leaky     1 1 104_753_bn 104_753_bn_leaky 0=0.1
+ConvolutionDepthWise   105_761              1 1 104_753_bn_leaky 105_761 0=224 1=3 2=1 3=1 4=1 5=0 6=2016 7=224
+BatchNorm              105_761_bn           1 1 105_761 105_761_bn 0=224 1=.00001
+ReLU                   105_761_bn_leaky     1 1 105_761_bn 105_761_bn_leaky 0=0.1
+Convolution            106_770              1 1 105_761_bn_leaky 106_770 0=48 1=1 2=1 3=1 4=0 5=0 6=10752
+BatchNorm              106_770_bn           1 1 106_770 106_770_bn 0=48 1=.00001
+Eltwise                108_781              2 1 106_770_bn 103_749_split_1 108_781 0=1
+Split                  108_781_split        1 4 108_781 108_781_split_0 108_781_split_1 108_781_split_2 108_781_split_3
+Pooling                109_785              1 1 108_781_split_0 109_785 0=0 1=3 2=1 5=1 3=1 13=1 14=1 15=1
+Pooling                111_792              1 1 108_781_split_1 111_792 0=0 1=5 2=1 5=1 3=2 13=2 14=2 15=2
+Pooling                113_799              1 1 108_781_split_2 113_799 0=0 1=9 2=1 5=1 3=4 13=4 14=4 15=4
+Concat                 114_803              4 1 113_799 111_792 109_785 108_781_split_3 114_803
+Convolution            115_808              1 1 114_803 115_808 0=96 1=1 2=1 3=1 4=0 5=0 6=18432
+BatchNorm              115_808_bn           1 1 115_808 115_808_bn 0=96 1=.00001
+ReLU                   115_808_bn_leaky     1 1 115_808_bn 115_808_bn_leaky 0=0.1
+Split                  115_808_bn_leaky_split 1 2 115_808_bn_leaky 115_808_bn_leaky_split_0 115_808_bn_leaky_split_1
+ConvolutionDepthWise   116_816              1 1 115_808_bn_leaky_split_0 116_816 0=96 1=5 2=1 3=1 4=2 5=0 6=2400 7=96
+BatchNorm              116_816_bn           1 1 116_816 116_816_bn 0=96 1=.00001
+ReLU                   116_816_bn_leaky     1 1 116_816_bn 116_816_bn_leaky 0=0.1
+Convolution            117_825              1 1 116_816_bn_leaky 117_825 0=96 1=1 2=1 3=1 4=0 5=0 6=9216
+BatchNorm              117_825_bn           1 1 117_825 117_825_bn 0=96 1=.00001
+ConvolutionDepthWise   118_833              1 1 117_825_bn 118_833 0=96 1=5 2=1 3=1 4=2 5=0 6=2400 7=96
+BatchNorm              118_833_bn           1 1 118_833 118_833_bn 0=96 1=.00001
+ReLU                   118_833_bn_leaky     1 1 118_833_bn 118_833_bn_leaky 0=0.1
+Convolution            119_842              1 1 118_833_bn_leaky 119_842 0=96 1=1 2=1 3=1 4=0 5=0 6=9216
+BatchNorm              119_842_bn           1 1 119_842 119_842_bn 0=96 1=.00001
+Convolution            120_851              1 1 119_842_bn 120_851 0=60 1=1 2=1 3=1 4=0 5=1 6=5760
+Interp                 123_879              1 1 115_808_bn_leaky_split_1 123_879 0=1 1=2.f 2=2.f
+Concat                 124_882              2 1 123_879 80_590_split_1 124_882
+ConvolutionDepthWise   125_885              1 1 124_882 125_885 0=120 1=5 2=1 3=1 4=2 5=0 6=3000 7=120
+BatchNorm              125_885_bn           1 1 125_885 125_885_bn 0=120 1=.00001
+ReLU                   125_885_bn_leaky     1 1 125_885_bn 125_885_bn_leaky 0=0.1
+Convolution            126_894              1 1 125_885_bn_leaky 126_894 0=120 1=1 2=1 3=1 4=0 5=0 6=14400
+BatchNorm              126_894_bn           1 1 126_894 126_894_bn 0=120 1=.00001
+ConvolutionDepthWise   127_902              1 1 126_894_bn 127_902 0=120 1=5 2=1 3=1 4=2 5=0 6=3000 7=120
+BatchNorm              127_902_bn           1 1 127_902 127_902_bn 0=120 1=.00001
+ReLU                   127_902_bn_leaky     1 1 127_902_bn 127_902_bn_leaky 0=0.1
+Convolution            128_911              1 1 127_902_bn_leaky 128_911 0=120 1=1 2=1 3=1 4=0 5=0 6=14400
+BatchNorm              128_911_bn           1 1 128_911 128_911_bn 0=120 1=.00001
+Convolution            129_919              1 1 128_911_bn 129_919 0=60 1=1 2=1 3=1 4=0 5=1 6=7200
+Yolov3DetectionOutput  detection_out        2 1 120_851 129_919 output 0=15 1=3 2=0.250000 -23304=12,12.000000,18.000000,37.000000,49.000000,52.000000,132.000000,115.000000,73.000000,119.000000,199.000000,242.000000,238.000000 -23305=6,3.000000,4.000000,5.000000,0.000000,1.000000,2.000000 -23306=2,32.000000,16.000000
