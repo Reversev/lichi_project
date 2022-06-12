@@ -1,0 +1,3 @@
+cd ~/pupillocation/build/yolofastest
+./build2py.sh
+Òª×Ô¼ºÐ´./pytest.py
